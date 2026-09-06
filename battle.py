@@ -10,6 +10,7 @@ def factory_test(factory: CreatureFactory) -> None:
     print(evolution.describe())
     print(evolution.attack())
 
+
 def battle_test(f_one: CreatureFactory, f_two: CreatureFactory) -> None:
     pokemon_one = f_one.create_base()
     pokemon_two = f_two.create_base()
@@ -21,6 +22,7 @@ def battle_test(f_one: CreatureFactory, f_two: CreatureFactory) -> None:
     print(pokemon_one.attack())
     print(pokemon_two.attack())
 
+
 def test_start() -> None:
     f_factory = FlameFactory()
     a_factory = AquaFactory()
@@ -29,5 +31,6 @@ def test_start() -> None:
     factory_test(a_factory)
     print()
     battle_test(f_factory, a_factory)
+
 
 test_start()
