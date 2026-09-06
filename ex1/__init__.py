@@ -1,3 +1,6 @@
-from ex0.factory import CreatureFactory, FlameFactory, AquaFactory
+from ex1.factory import HealingCreatureFactory, TransformCreatureFactory
+from ex1.capability import HealCapability, TransformCapability
 
-__all__ = ["CreatureFactory", "FlameFactory", "AquaFactory"]
+
+__all__ = ["HealingCreatureFactory", "TransformCreatureFactory",
+           "HealCapability", "TransformCapability"]

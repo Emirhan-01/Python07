@@ -2,10 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class Creature(ABC):
-
-    def __init__(self, name: str, type_: str) -> None:
+    def __init__(self, name: str, c_type: str) -> None:
         self.name = name
-        self.type = type_
+        self.type = c_type
 
     @abstractmethod
     def attack(self) -> str:
@@ -17,7 +16,7 @@ class Creature(ABC):
 
 class Flameling(Creature):
     def __init__(self) -> None:
-        super().__init__("Flameling", "Fire")
+        super().__init__(name="Flameling", c_type="Fire")
 
     def attack(self) -> str:
         return "Flameling uses Ember!"
@@ -25,7 +24,7 @@ class Flameling(Creature):
 
 class Pyrodon(Creature):
     def __init__(self) -> None:
-        super().__init__("Pyrodon", "Fire/Flying")
+        super().__init__(name="Pyrodon", c_type="Fire/Flying")
 
     def attack(self) -> str:
         return "Pyrodon uses Flamethrower!"
@@ -33,7 +32,7 @@ class Pyrodon(Creature):
 
 class Aquabub(Creature):
     def __init__(self) -> None:
-        super().__init__("Aquabub", "Water")
+        super().__init__(name="Aquabub", c_type="Water")
 
     def attack(self) -> str:
         return "Aquabub uses Water Gun!"
@@ -41,7 +40,7 @@ class Aquabub(Creature):
 
 class Torragon(Creature):
     def __init__(self) -> None:
-        super().__init__("Torragon", "Water")
+        super().__init__(name="Torragon", c_type="Water")
 
     def attack(self) -> str:
         return "Torragon uses Hydro Pump!"

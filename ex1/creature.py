@@ -1,47 +1,64 @@
-from abc import ABC, abstractmethod
+from ex0.creature import Creature
+from ex1.capability import HealCapability, TransformCapability
 
 
-class Creature(ABC):
-
-    def __init__(self, name: str, type_: str) -> None:
-        self.name = name
-        self.type = type_
-
-    @abstractmethod
-    def attack(self) -> str:
-        ...
-
-    def describe(self) -> str:
-        return f"{self.name} is a {self.type} type Creature"
-
-
-class Flameling(Creature):
+class Sproutling(Creature, HealCapability):
     def __init__(self) -> None:
-        super().__init__("Flameling", "Fire")
+        super().__init__(name="Sproutling", c_type="Grass")
 
     def attack(self) -> str:
-        return "Flameling uses Ember!"
+        return "Sproutling uses Vine Whip!"
+
+    def heal(self) -> str:
+        return "Sproutling heals itself for a small amount"
 
 
-class Pyrodon(Creature):
+class Bloomelle(Creature, HealCapability):
     def __init__(self) -> None:
-        super().__init__("Pyrodon", "Fire/Flying")
+        super().__init__(name="Bloomelle", c_type="Grass/Fairy")
 
     def attack(self) -> str:
-        return "Pyrodon uses Flamethrower!"
+        return "Bloomelle uses Petal Dance!"
+
+    def heal(self) -> str:
+        return "Bloomelle heals itself and others for a large amount"
 
 
-class Aquabub(Creature):
+class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
-        super().__init__("Aquabub", "Water")
+        super().__init__(name="Shiftling", c_type="Normal")
+        self.is_transformed = False
 
     def attack(self) -> str:
-        return "Aquabub uses Water Gun!"
+        if self.is_transformed:
+            return "Shiftling performs a boosted strike!"
+        else:
+            return "Shiftling attacks normally."
+
+    def transform(self) -> str:
+        self.is_transformed = True
+        return "Shiftling shifts into a sharper form!"
+
+    def revert(self) -> str:
+        self.is_transformed = False
+        return "Shiftling returns to normal."
 
 
-class Torragon(Creature):
+class Morphagon(Creature, TransformCapability):
     def __init__(self) -> None:
-        super().__init__("Torragon", "Water")
+        super().__init__(name="Morphagon", c_type="Normal/Dragon")
+        self.is_transformed = False
 
     def attack(self) -> str:
-        return "Torragon uses Hydro Pump!"
+        if self.is_transformed:
+            return "Morphagon unleashes a devastating morph strike!"
+        else:
+            return "Morphagon attacks normally."
+
+    def transform(self) -> str:
+        self.is_transformed = True
+        return "Morphagon morphs into a dragonic battle form!"
+
+    def revert(self) -> str:
+        self.is_transformed = False
+        return "Morphagon stabilizes its form."

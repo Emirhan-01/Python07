@@ -1,29 +1,18 @@
-from abc import ABC, abstractmethod
-from ex0.creature import Creature, Flameling, Pyrodon, Aquabub, Torragon
+from ex0.factory import CreatureFactory
+from ex1.creature import Sproutling, Bloomelle, Shiftling, Morphagon
 
 
-class CreatureFactory(ABC):
+class HealingCreatureFactory(CreatureFactory):
+    def create_base(self) -> Sproutling:
+        return Sproutling()
 
-    @abstractmethod
-    def create_base(self) -> Creature:
-        ...
-
-    @abstractmethod
-    def create_evolved(self) -> Creature:
-        ...
+    def create_evolved(self) -> Bloomelle:
+        return Bloomelle()
 
 
-class FlameFactory(CreatureFactory):
-    def create_base(self) -> Creature:
-        return Flameling()
+class TransformCreatureFactory(CreatureFactory):
+    def create_base(self) -> Shiftling:
+        return Shiftling()
 
-    def create_evolved(self) -> Creature:
-        return Pyrodon()
-
-
-class AquaFactory(CreatureFactory):
-    def create_base(self) -> Creature:
-        return Aquabub()
-
-    def create_evolved(self) -> Creature:
-        return Torragon()
+    def create_evolved(self) -> Morphagon:
+        return Morphagon()
