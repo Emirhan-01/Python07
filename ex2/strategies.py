@@ -19,8 +19,9 @@ class BattleStrategy(ABC):
     
 
 class NormalStrategy(BattleStrategy):
-    def is_valid(self, creature) -> bool:
-        return True
+    def is_valid(self, creature: Creature) -> bool:
+        return isinstance(creature, Creature)
+
     def act(self, creature: Creature) -> None:
         print(creature.describe())
         print(creature.attack())
@@ -28,7 +29,7 @@ class NormalStrategy(BattleStrategy):
 
 class AggressiveStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, (TransformCapability))
+        return isinstance(creature, TransformCapability)
     
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
@@ -43,8 +44,8 @@ class AggressiveStrategy(BattleStrategy):
 
 
 class DefensiveStrategy(BattleStrategy):
-    def is_valid(self, creature) -> bool:
-        return isinstance(creature, (HealCapability))
+    def is_valid(self, creature: Creature) -> bool:
+        return isinstance(creature, HealCapability)
     
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
