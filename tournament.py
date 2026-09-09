@@ -16,10 +16,10 @@ def run_tournament(pokemons: list[Pokemon]) -> None:
         for factory2, strat2 in pokemons[i + 1:]:
             c1 = factory1.create_base()
             c2 = factory2.create_base()
-    
+
             print("\n* Battle *")
             print(f"{c1.describe()}\nvs.\n{c2.describe()}\nnow fight!")
-    
+
             try:
                 strat1.act(c1)
                 strat2.act(c2)
