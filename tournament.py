@@ -5,15 +5,15 @@ from ex2 import (
     DefensiveStrategy, InvalidStrategyError)
 
 
-Warrior = tuple[CreatureFactory, BattleStrategy]
+Pokemon = tuple[CreatureFactory, BattleStrategy]
 
 
-def run_tournament(warriors: list[Warrior]) -> None:
+def run_tournament(pokemons: list[Pokemon]) -> None:
     print("*** Tournament ***")
-    print(f"{len(warriors)} opponents involved")
+    print(f"{len(pokemons)} opponents involved")
 
-    for i, (factory1, strat1) in enumerate(warriors):
-        for factory2, strat2 in warriors[i + 1:]:
+    for i, (factory1, strat1) in enumerate(pokemons):
+        for factory2, strat2 in pokemons[i + 1:]:
             c1 = factory1.create_base()
             c2 = factory2.create_base()
     
