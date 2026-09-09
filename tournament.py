@@ -1,5 +1,3 @@
-import itertools
-from typing import List, Tuple
 from ex0 import FlameFactory, AquaFactory, CreatureFactory
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex2 import (
@@ -7,29 +5,27 @@ from ex2 import (
     DefensiveStrategy, InvalidStrategyError)
 
 
-Warrior = Tuple[CreatureFactory, BattleStrategy]
+Warrior = tuple[CreatureFactory, BattleStrategy]
 
 
-def run_tournament(warriors: List[Warrior]) -> None:
+def run_tournament(warriors: list[Warrior]) -> None:
     print("*** Tournament ***")
     print(f"{len(warriors)} opponents involved")
 
-    for (
-            (factory1, strat1),
-            (factory2, strat2)
-         ) in itertools.combinations(warriors, 2):
-        c1 = factory1.create_base()
-        c2 = factory2.create_base()
-
-        print("\n* Battle *")
-        print(f"{c1.describe()}\nvs.\n{c2.describe()}\nnow fight!")
-
-        try:
-            strat1.act(c1)
-            strat2.act(c2)
-        except InvalidStrategyError as e:
-            print(e)
-            return
+    for i, (factory1, strat1) in enumerate(warriors):
+        for factory2, strat2 in warriors[i + 1:]:
+            c1 = factory1.create_base()
+            c2 = factory2.create_base()
+    
+            print("\n* Battle *")
+            print(f"{c1.describe()}\nvs.\n{c2.describe()}\nnow fight!")
+    
+            try:
+                strat1.act(c1)
+                strat2.act(c2)
+            except InvalidStrategyError as e:
+                print(e)
+                return
 
 
 if __name__ == "__main__":
