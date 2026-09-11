@@ -10,7 +10,7 @@ Pokemon = tuple[CreatureFactory, BattleStrategy]
 
 def run_tournament(pokemons: list[Pokemon]) -> None:
     print("*** Tournament ***")
-    print(f"{len(pokemons)} opponents involved")
+    print(f"{len(pokemons)} pokemons involved")
 
     for i, (factory1, strat1) in enumerate(pokemons):
         for factory2, strat2 in pokemons[i + 1:]:
